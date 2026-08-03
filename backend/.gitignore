@@ -1,0 +1,9 @@
+node_modules/
+.npm-cache/
+.venv/
+uploads/
+generated-audio/
+*.log
+.env
+user.json
+history.json

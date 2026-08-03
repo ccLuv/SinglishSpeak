@@ -1,0 +1,92 @@
+[
+  {
+    "id": "government-en-001",
+    "language": "en",
+    "direction": "en-to-zh",
+    "difficulty": 1,
+    "text": "The Singapore government will introduce new measures to support small and medium-sized enterprises.",
+    "referenceTranslation": "新加坡政府将推出新措施，以支持中小型企业。",
+    "keywords": ["Singapore government", "new measures", "small and medium-sized enterprises"]
+  },
+  {
+    "id": "government-zh-002",
+    "language": "zh",
+    "direction": "zh-to-en",
+    "difficulty": 1,
+    "text": "政府将继续改善公共交通网络，为居民提供更便捷的出行选择。",
+    "referenceTranslation": "The government will continue to improve the public transport network and provide residents with more convenient travel options.",
+    "keywords": ["government", "public transport network", "residents", "convenient"]
+  },
+  {
+    "id": "government-en-003",
+    "language": "en",
+    "direction": "en-to-zh",
+    "difficulty": 2,
+    "text": "The new policy aims to make public housing more affordable for young families and first-time buyers.",
+    "referenceTranslation": "这项新政策旨在让年轻家庭和首次购房者更能负担得起公共住房。",
+    "keywords": ["new policy", "public housing", "young families", "first-time buyers"]
+  },
+  {
+    "id": "government-zh-004",
+    "language": "zh",
+    "direction": "zh-to-en",
+    "difficulty": 2,
+    "text": "有关部门将通过数字化服务简化申请流程，并缩短公众的等待时间。",
+    "referenceTranslation": "The relevant authorities will simplify the application process through digital services and shorten waiting times for the public.",
+    "keywords": ["authorities", "digital services", "application process", "waiting times"]
+  },
+  {
+    "id": "government-en-005",
+    "language": "en",
+    "direction": "en-to-zh",
+    "difficulty": 2,
+    "text": "Singapore is strengthening cooperation with regional partners to improve food and energy security.",
+    "referenceTranslation": "新加坡正加强与区域伙伴的合作，以提升粮食和能源安全。",
+    "keywords": ["regional partners", "cooperation", "food security", "energy security"]
+  },
+  {
+    "id": "government-zh-006",
+    "language": "zh",
+    "direction": "zh-to-en",
+    "difficulty": 2,
+    "text": "这项计划预计将在未来三年内为一万名求职者提供技能培训。",
+    "referenceTranslation": "The programme is expected to provide skills training to ten thousand job seekers over the next three years.",
+    "keywords": ["programme", "next three years", "ten thousand", "job seekers", "skills training"]
+  },
+  {
+    "id": "government-en-007",
+    "language": "en",
+    "direction": "en-to-zh",
+    "difficulty": 3,
+    "text": "To meet its climate goals, Singapore plans to reduce emissions while maintaining economic competitiveness.",
+    "referenceTranslation": "为实现气候目标，新加坡计划在保持经济竞争力的同时减少排放。",
+    "keywords": ["climate goals", "reduce emissions", "economic competitiveness"]
+  },
+  {
+    "id": "government-zh-008",
+    "language": "zh",
+    "direction": "zh-to-en",
+    "difficulty": 3,
+    "text": "政府表示，在制定长期人口政策时，将充分考虑经济需求和社会凝聚力。",
+    "referenceTranslation": "The government said that both economic needs and social cohesion would be fully considered when formulating long-term population policies.",
+    "keywords": ["economic needs", "social cohesion", "long-term population policies"]
+  },
+  {
+    "id": "government-en-009",
+    "language": "en",
+    "direction": "en-to-zh",
+    "difficulty": 3,
+    "text": "Public feedback collected during the consultation will be reviewed before the proposed regulations are finalised.",
+    "referenceTranslation": "在拟议条例最终确定之前，有关方面将审议咨询期间收集的公众反馈。",
+    "keywords": ["public feedback", "consultation", "proposed regulations", "finalised"]
+  },
+  {
+    "id": "government-zh-010",
+    "language": "zh",
+    "direction": "zh-to-en",
+    "difficulty": 3,
+    "text": "新预算案将重点帮助低收入家庭应对生活成本上涨所带来的压力。",
+    "referenceTranslation": "The new budget will focus on helping lower-income families cope with pressures arising from the rising cost of living.",
+    "keywords": ["new budget", "lower-income families", "cost of living", "pressures"]
+  }
+]

@@ -1,0 +1,1 @@
+{"name":"SinglishSpeak","appid":"__UNI__SINGLISHSPEAK","description":"面向新加坡语境的AI辅助口译训练与反馈应用","versionName":"1.0.0","versionCode":"100","transformPx":false,"app-plus":{"usingComponents":true,"compilerVersion":3,"distribute":{"android":{"permissions":["<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>"]}}},"h5":{"title":"SinglishSpeak"},"vueVersion":"3"}

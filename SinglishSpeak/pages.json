@@ -1,0 +1,38 @@
+{
+  "pages": [
+    {
+      "path": "pages/login/login",
+      "style": { "navigationStyle": "custom" }
+    },
+    {
+      "path": "pages/home/home",
+      "style": { "navigationBarTitleText": "训练中心" }
+    },
+    {
+      "path": "pages/training/training",
+      "style": { "navigationBarTitleText": "口译训练" }
+    },
+    {
+      "path": "pages/result/result",
+      "style": { "navigationBarTitleText": "测评报告" }
+    },
+    {
+      "path": "pages/history/history",
+      "style": { "navigationBarTitleText": "训练历史" }
+    },
+    {
+      "path": "pages/history-detail/history-detail",
+      "style": { "navigationBarTitleText": "训练详情" }
+    },
+    {
+      "path": "pages/profile/profile",
+      "style": { "navigationBarTitleText": "个人中心" }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "SinglishSpeak",
+    "navigationBarBackgroundColor": "#f4f7f6",
+    "backgroundColor": "#f4f7f6"
+  }
+}

@@ -1,0 +1,3 @@
+import{API_BASE_URL}from'../config'
+export function request(path,options={}){return new Promise((resolve,reject)=>uni.request({url:API_BASE_URL+path,method:options.method||'GET',data:options.data||{},timeout:options.timeout||20000,success:({data,statusCode})=>statusCode>=200&&statusCode<300&&data.code===200?resolve(data.data??data):reject(new Error(data?.msg||'请求失败')),fail:()=>reject(new Error('无法连接后端，请检查服务及 API 地址'))}))}
+export function uploadAudio(filePath){return new Promise((resolve,reject)=>uni.uploadFile({url:API_BASE_URL+'/api/uploadAudio',filePath,name:'audio',timeout:60000,success:({data})=>{try{const b=JSON.parse(data);b.code===200?resolve(b.data):reject(new Error(b.msg||'上传失败'))}catch{reject(new Error('服务器返回格式错误'))}},fail:()=>reject(new Error('录音上传失败'))}))}

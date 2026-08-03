@@ -1,0 +1,28 @@
+# Dependencies and local runtimes
+**/node_modules/
+**/.npm-cache/
+**/.venv/
+
+# Secrets and local environment
+**/.env
+!**/.env.example
+
+# Runtime user data and generated media
+backend/user.json
+backend/history.json
+backend/uploads/
+backend/generated-audio/
+backend/*.log
+
+# HBuilderX build output
+**/unpackage/
+
+# Operating-system and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Older duplicate exports retained locally but not part of the repository
+/questions/
+/server.js

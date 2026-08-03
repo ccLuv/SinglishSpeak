@@ -1,0 +1,92 @@
+[
+  {
+    "id": "education-en-001",
+    "language": "en",
+    "direction": "en-to-zh",
+    "difficulty": 1,
+    "text": "Students will take part in a two-week exchange programme during the school holidays.",
+    "referenceTranslation": "学生将在学校假期期间参加为期两周的交流项目。",
+    "keywords": ["students", "two-week", "exchange programme", "school holidays"]
+  },
+  {
+    "id": "education-zh-002",
+    "language": "zh",
+    "direction": "zh-to-en",
+    "difficulty": 1,
+    "text": "学校将为新生提供学习指导和心理健康支持。",
+    "referenceTranslation": "The school will provide new students with academic guidance and mental health support.",
+    "keywords": ["school", "new students", "academic guidance", "mental health support"]
+  },
+  {
+    "id": "education-en-003",
+    "language": "en",
+    "direction": "en-to-zh",
+    "difficulty": 2,
+    "text": "Teachers are encouraged to use technology to create more engaging and inclusive lessons.",
+    "referenceTranslation": "学校鼓励教师利用科技设计更具吸引力和包容性的课程。",
+    "keywords": ["teachers", "technology", "engaging", "inclusive lessons"]
+  },
+  {
+    "id": "education-zh-004",
+    "language": "zh",
+    "direction": "zh-to-en",
+    "difficulty": 2,
+    "text": "这项奖学金面向成绩优秀并积极参与社区服务的学生。",
+    "referenceTranslation": "The scholarship is open to students who achieve excellent academic results and actively participate in community service.",
+    "keywords": ["scholarship", "academic results", "participate", "community service"]
+  },
+  {
+    "id": "education-en-005",
+    "language": "en",
+    "direction": "en-to-zh",
+    "difficulty": 2,
+    "text": "The university will work with industry partners to offer more internship opportunities.",
+    "referenceTranslation": "大学将与行业伙伴合作，提供更多实习机会。",
+    "keywords": ["university", "industry partners", "internship opportunities"]
+  },
+  {
+    "id": "education-zh-006",
+    "language": "zh",
+    "direction": "zh-to-en",
+    "difficulty": 2,
+    "text": "双语教育有助于学生理解不同文化，并提升他们的沟通能力。",
+    "referenceTranslation": "Bilingual education helps students understand different cultures and improve their communication skills.",
+    "keywords": ["bilingual education", "different cultures", "communication skills"]
+  },
+  {
+    "id": "education-en-007",
+    "language": "en",
+    "direction": "en-to-zh",
+    "difficulty": 3,
+    "text": "The revised curriculum places greater emphasis on critical thinking, collaboration and independent learning.",
+    "referenceTranslation": "修订后的课程更加重视批判性思维、协作能力和自主学习。",
+    "keywords": ["revised curriculum", "critical thinking", "collaboration", "independent learning"]
+  },
+  {
+    "id": "education-zh-008",
+    "language": "zh",
+    "direction": "zh-to-en",
+    "difficulty": 3,
+    "text": "教育工作者需要在学术要求与学生的整体福祉之间取得平衡。",
+    "referenceTranslation": "Educators need to strike a balance between academic requirements and students' overall well-being.",
+    "keywords": ["educators", "strike a balance", "academic requirements", "overall well-being"]
+  },
+  {
+    "id": "education-en-009",
+    "language": "en",
+    "direction": "en-to-zh",
+    "difficulty": 3,
+    "text": "Lifelong learning has become increasingly important as technological change transforms the skills required at work.",
+    "referenceTranslation": "随着技术变革改变职场所需技能，终身学习变得越来越重要。",
+    "keywords": ["lifelong learning", "technological change", "skills", "work"]
+  },
+  {
+    "id": "education-zh-010",
+    "language": "zh",
+    "direction": "zh-to-en",
+    "difficulty": 3,
+    "text": "研究团队将评估线上教学对学生参与度和学习成果的长期影响。",
+    "referenceTranslation": "The research team will evaluate the long-term impact of online teaching on student engagement and learning outcomes.",
+    "keywords": ["research team", "online teaching", "student engagement", "learning outcomes"]
+  }
+]

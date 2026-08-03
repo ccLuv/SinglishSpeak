@@ -1,0 +1,92 @@
+[
+  {
+    "id": "business-en-001",
+    "language": "en",
+    "direction": "en-to-zh",
+    "difficulty": 1,
+    "text": "The company plans to open its regional headquarters in Singapore next year.",
+    "referenceTranslation": "该公司计划明年在新加坡设立区域总部。",
+    "keywords": ["company", "regional headquarters", "Singapore", "next year"]
+  },
+  {
+    "id": "business-zh-002",
+    "language": "zh",
+    "direction": "zh-to-en",
+    "difficulty": 1,
+    "text": "新加坡为国际企业进入东南亚市场提供了良好的商业环境。",
+    "referenceTranslation": "Singapore provides a favourable business environment for international companies entering the Southeast Asian market.",
+    "keywords": ["Singapore", "international companies", "business environment", "Southeast Asian market"]
+  },
+  {
+    "id": "business-en-003",
+    "language": "en",
+    "direction": "en-to-zh",
+    "difficulty": 2,
+    "text": "Sales increased by twelve percent in the second quarter, driven mainly by stronger online demand.",
+    "referenceTranslation": "第二季度销售额增长了百分之十二，主要受到线上需求增强的推动。",
+    "keywords": ["sales", "twelve percent", "second quarter", "online demand"]
+  },
+  {
+    "id": "business-zh-004",
+    "language": "zh",
+    "direction": "zh-to-en",
+    "difficulty": 2,
+    "text": "投资者在作出决定之前，应当充分了解项目的风险和预期回报。",
+    "referenceTranslation": "Investors should fully understand the project's risks and expected returns before making a decision.",
+    "keywords": ["investors", "risks", "expected returns", "decision"]
+  },
+  {
+    "id": "business-en-005",
+    "language": "en",
+    "direction": "en-to-zh",
+    "difficulty": 2,
+    "text": "Small businesses can apply for grants to adopt digital tools and improve productivity.",
+    "referenceTranslation": "小型企业可以申请补助，以采用数字工具并提高生产力。",
+    "keywords": ["small businesses", "grants", "digital tools", "productivity"]
+  },
+  {
+    "id": "business-zh-006",
+    "language": "zh",
+    "direction": "zh-to-en",
+    "difficulty": 2,
+    "text": "双方同意建立长期合作关系，并共同开发区域市场。",
+    "referenceTranslation": "Both parties agreed to establish a long-term partnership and jointly develop regional markets.",
+    "keywords": ["both parties", "long-term partnership", "jointly develop", "regional markets"]
+  },
+  {
+    "id": "business-en-007",
+    "language": "en",
+    "direction": "en-to-zh",
+    "difficulty": 3,
+    "text": "Despite higher operating costs, the group maintained a stable profit margin through careful cost management.",
+    "referenceTranslation": "尽管运营成本上升，该集团仍通过审慎的成本管理保持了稳定的利润率。",
+    "keywords": ["operating costs", "stable profit margin", "cost management"]
+  },
+  {
+    "id": "business-zh-008",
+    "language": "zh",
+    "direction": "zh-to-en",
+    "difficulty": 3,
+    "text": "企业必须在追求增长的同时，加强供应链韧性并履行环境责任。",
+    "referenceTranslation": "Companies must strengthen supply chain resilience and fulfil their environmental responsibilities while pursuing growth.",
+    "keywords": ["growth", "supply chain resilience", "environmental responsibilities"]
+  },
+  {
+    "id": "business-en-009",
+    "language": "en",
+    "direction": "en-to-zh",
+    "difficulty": 3,
+    "text": "The merger is subject to regulatory approval and is expected to be completed by the end of the financial year.",
+    "referenceTranslation": "这项合并尚待监管批准，预计将在本财年结束前完成。",
+    "keywords": ["merger", "regulatory approval", "completed", "financial year"]
+  },
+  {
+    "id": "business-zh-010",
+    "language": "zh",
+    "direction": "zh-to-en",
+    "difficulty": 3,
+    "text": "金融科技的发展不仅降低了交易成本，也为传统银行带来了新的竞争压力。",
+    "referenceTranslation": "The development of financial technology has not only reduced transaction costs but also created new competitive pressure for traditional banks.",
+    "keywords": ["financial technology", "transaction costs", "competitive pressure", "traditional banks"]
+  }
+]

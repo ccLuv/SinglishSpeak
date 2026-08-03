@@ -1,0 +1,92 @@
+[
+  {
+    "id": "community-en-001",
+    "language": "en",
+    "direction": "en-to-zh",
+    "difficulty": 1,
+    "text": "Residents can visit the community centre to receive help with digital services.",
+    "referenceTranslation": "居民可以前往社区中心，获取数字服务方面的帮助。",
+    "keywords": ["residents", "community centre", "digital services", "help"]
+  },
+  {
+    "id": "community-zh-002",
+    "language": "zh",
+    "direction": "zh-to-en",
+    "difficulty": 1,
+    "text": "志愿者将在周末为独居老人派送餐食。",
+    "referenceTranslation": "Volunteers will deliver meals to elderly people living alone over the weekend.",
+    "keywords": ["volunteers", "deliver meals", "elderly people living alone", "weekend"]
+  },
+  {
+    "id": "community-en-003",
+    "language": "en",
+    "direction": "en-to-zh",
+    "difficulty": 2,
+    "text": "The health screening is free for eligible residents aged forty and above.",
+    "referenceTranslation": "符合资格的四十岁及以上居民可以免费接受健康检查。",
+    "keywords": ["health screening", "free", "eligible residents", "forty and above"]
+  },
+  {
+    "id": "community-zh-004",
+    "language": "zh",
+    "direction": "zh-to-en",
+    "difficulty": 2,
+    "text": "社区活动旨在鼓励不同年龄和文化背景的居民相互交流。",
+    "referenceTranslation": "The community activity aims to encourage interaction among residents of different ages and cultural backgrounds.",
+    "keywords": ["community activity", "interaction", "different ages", "cultural backgrounds"]
+  },
+  {
+    "id": "community-en-005",
+    "language": "en",
+    "direction": "en-to-zh",
+    "difficulty": 2,
+    "text": "Families facing financial difficulties may approach the social service office for assistance.",
+    "referenceTranslation": "面临经济困难的家庭可以向社会服务办事处寻求援助。",
+    "keywords": ["families", "financial difficulties", "social service office", "assistance"]
+  },
+  {
+    "id": "community-zh-006",
+    "language": "zh",
+    "direction": "zh-to-en",
+    "difficulty": 2,
+    "text": "公共图书馆将延长开放时间，以满足学生和上班族的需求。",
+    "referenceTranslation": "The public library will extend its opening hours to meet the needs of students and working adults.",
+    "keywords": ["public library", "extend", "opening hours", "students", "working adults"]
+  },
+  {
+    "id": "community-en-007",
+    "language": "en",
+    "direction": "en-to-zh",
+    "difficulty": 3,
+    "text": "The programme brings together healthcare providers and community partners to support active ageing.",
+    "referenceTranslation": "该计划汇集医疗服务提供者和社区伙伴，共同支持积极乐龄。",
+    "keywords": ["programme", "healthcare providers", "community partners", "active ageing"]
+  },
+  {
+    "id": "community-zh-008",
+    "language": "zh",
+    "direction": "zh-to-en",
+    "difficulty": 3,
+    "text": "有关机构将加强外展工作，确保弱势群体能够及时获得所需服务。",
+    "referenceTranslation": "The relevant agencies will strengthen outreach efforts to ensure that vulnerable groups can receive the services they need in a timely manner.",
+    "keywords": ["agencies", "outreach efforts", "vulnerable groups", "services", "timely manner"]
+  },
+  {
+    "id": "community-en-009",
+    "language": "en",
+    "direction": "en-to-zh",
+    "difficulty": 3,
+    "text": "Residents are encouraged to provide feedback on how shared public spaces can be made safer and more accessible.",
+    "referenceTranslation": "当局鼓励居民就如何让共享公共空间更安全、更便利提出意见。",
+    "keywords": ["residents", "feedback", "shared public spaces", "safer", "accessible"]
+  },
+  {
+    "id": "community-zh-010",
+    "language": "zh",
+    "direction": "zh-to-en",
+    "difficulty": 3,
+    "text": "为了建设更具包容性的社会，公共服务必须考虑残障人士的实际需要。",
+    "referenceTranslation": "To build a more inclusive society, public services must take into account the practical needs of persons with disabilities.",
+    "keywords": ["inclusive society", "public services", "practical needs", "persons with disabilities"]
+  }
+]

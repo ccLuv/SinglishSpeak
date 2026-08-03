@@ -1,0 +1,92 @@
+[
+  {
+    "id": "legal-en-001",
+    "language": "en",
+    "direction": "en-to-zh",
+    "difficulty": 1,
+    "text": "Visitors must present a valid identification document before entering the court building.",
+    "referenceTranslation": "访客进入法院大楼前必须出示有效身份证件。",
+    "keywords": ["visitors", "valid identification document", "court building"]
+  },
+  {
+    "id": "legal-zh-002",
+    "language": "zh",
+    "direction": "zh-to-en",
+    "difficulty": 1,
+    "text": "申请人必须在规定期限内提交所有必要文件。",
+    "referenceTranslation": "Applicants must submit all necessary documents within the specified period.",
+    "keywords": ["applicants", "necessary documents", "specified period"]
+  },
+  {
+    "id": "legal-en-003",
+    "language": "en",
+    "direction": "en-to-zh",
+    "difficulty": 2,
+    "text": "The agreement will take effect only after it has been signed by both parties.",
+    "referenceTranslation": "该协议只有在双方签署后才会生效。",
+    "keywords": ["agreement", "take effect", "signed", "both parties"]
+  },
+  {
+    "id": "legal-zh-004",
+    "language": "zh",
+    "direction": "zh-to-en",
+    "difficulty": 2,
+    "text": "未经当事人同意，相关个人资料不得向第三方披露。",
+    "referenceTranslation": "The relevant personal data must not be disclosed to a third party without the individual's consent.",
+    "keywords": ["personal data", "disclosed", "third party", "consent"]
+  },
+  {
+    "id": "legal-en-005",
+    "language": "en",
+    "direction": "en-to-zh",
+    "difficulty": 2,
+    "text": "The mediator will help the parties reach a mutually acceptable solution without going to trial.",
+    "referenceTranslation": "调解员将帮助双方在不进入审判程序的情况下达成彼此都能接受的解决方案。",
+    "keywords": ["mediator", "parties", "mutually acceptable solution", "trial"]
+  },
+  {
+    "id": "legal-zh-006",
+    "language": "zh",
+    "direction": "zh-to-en",
+    "difficulty": 2,
+    "text": "参访期间请保持安静，并遵守机构的安全规定。",
+    "referenceTranslation": "Please remain quiet during the visit and comply with the institution's safety regulations.",
+    "keywords": ["remain quiet", "visit", "institution", "safety regulations"]
+  },
+  {
+    "id": "legal-en-007",
+    "language": "en",
+    "direction": "en-to-zh",
+    "difficulty": 3,
+    "text": "Any amendment to the contract must be made in writing and approved by authorised representatives.",
+    "referenceTranslation": "合同的任何修改都必须以书面形式作出，并由获授权代表批准。",
+    "keywords": ["amendment", "contract", "in writing", "authorised representatives"]
+  },
+  {
+    "id": "legal-zh-008",
+    "language": "zh",
+    "direction": "zh-to-en",
+    "difficulty": 3,
+    "text": "法庭在作出裁决时，将综合考虑证据、相关法律和案件的具体情况。",
+    "referenceTranslation": "In making its decision, the court will consider the evidence, the relevant law and the specific circumstances of the case.",
+    "keywords": ["court", "decision", "evidence", "relevant law", "circumstances"]
+  },
+  {
+    "id": "legal-en-009",
+    "language": "en",
+    "direction": "en-to-zh",
+    "difficulty": 3,
+    "text": "Organisations are required to take reasonable steps to protect personal data from unauthorised access or disclosure.",
+    "referenceTranslation": "机构必须采取合理措施，保护个人资料免遭未经授权的访问或披露。",
+    "keywords": ["organisations", "reasonable steps", "personal data", "unauthorised access", "disclosure"]
+  },
+  {
+    "id": "legal-zh-010",
+    "language": "zh",
+    "direction": "zh-to-en",
+    "difficulty": 3,
+    "text": "如果双方无法通过协商解决争议，可以根据协议条款启动仲裁程序。",
+    "referenceTranslation": "If the parties are unable to resolve the dispute through negotiation, they may commence arbitration proceedings under the terms of the agreement.",
+    "keywords": ["parties", "resolve the dispute", "negotiation", "arbitration proceedings", "agreement"]
+  }
+]
