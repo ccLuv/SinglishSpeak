@@ -8,7 +8,12 @@
     <view class="prompt card">
       <view class="head">
         <text class="muted">SOURCE TEXT</text>
-        <text class="link" @click="loadTopic">换一题</text>
+        <view v-if="!topicConfirmed" class="topic-actions">
+          <button class="topic-action change" :loading="loadingTopic" :disabled="loadingTopic" @click="loadTopic">换一题</button>
+          <button class="topic-action confirm" :disabled="!topic || loadingTopic" @click="confirmTopic">
+            确定
+          </button>
+        </view>
       </view>
       <text class="source">{{ topic }}</text>
       <button class="listen" :disabled="!topic" @click="toggleSourceAudio">
@@ -18,7 +23,11 @@
     </view>
 
     <view class="recorder">
-      <view class="ring" :class="{ active: recording }" @click="toggleRecord">
+      <view
+        class="ring"
+        :class="{ active: recording, locked: !topicConfirmed }"
+        @click="toggleRecord"
+      >
         <view class="mic">{{ recording ? "■" : "●" }}</view>
       </view>
       <text class="timer">{{ timeText }}</text>
@@ -27,12 +36,19 @@
 
     <view v-if="audioPath" class="ready card">
       <text>✓ 录音已准备</text>
-      <text class="link" @click="playRecording">试听</text>
+      <view class="record-actions">
+        <button class="record-action preview" :disabled="submitting" @click="playRecording">
+          试听
+        </button>
+        <button class="record-action rerecord" :disabled="submitting" @click="rerecord">
+          重新录音
+        </button>
+      </view>
     </view>
 
     <button
       class="primary"
-      :disabled="!audioPath"
+      :disabled="!audioPath || !topicConfirmed"
       :loading="submitting"
       @click="submit"
     >
@@ -51,6 +67,8 @@ const typeName = ref("口译训练");
 const questionId = ref("");
 const topic = ref("");
 const topicLanguage = ref("en");
+const topicConfirmed = ref(false);
+const loadingTopic = ref(false);
 const recording = ref(false);
 const speaking = ref(false);
 const seconds = ref(0);
@@ -86,6 +104,7 @@ const timeText = computed(
 const recordHint = computed(() => {
   if (recording.value) return "正在录音，点击停止";
   if (audioPath.value) return "录音完成，可重新录制";
+  if (!topicConfirmed.value) return "请先确定题目，再开始录音";
   return "点击开始口译录音";
 });
 
@@ -96,7 +115,11 @@ onLoad((query) => {
 });
 
 async function loadTopic() {
+  if (topicConfirmed.value || loadingTopic.value) return;
+  loadingTopic.value = true;
   stopSourceAudio();
+  clearPreviousRecording();
+  seconds.value = 0;
   try {
     const excludeQuery = questionId.value
       ? `&excludeId=${encodeURIComponent(questionId.value)}`
@@ -107,9 +130,21 @@ async function loadTopic() {
     questionId.value = data.id;
     topic.value = data.topic;
     topicLanguage.value = data.language || "en";
+    topicConfirmed.value = false;
   } catch (error) {
     uni.showToast({ title: error.message, icon: "none" });
+  } finally {
+    loadingTopic.value = false;
   }
+}
+
+function confirmTopic() {
+  if (!questionId.value || !topic.value) {
+    uni.showToast({ title: "题目尚未加载", icon: "none" });
+    return;
+  }
+  topicConfirmed.value = true;
+  uni.showToast({ title: "题目已确定", icon: "success" });
 }
 
 async function toggleSourceAudio() {
@@ -248,8 +283,13 @@ async function toggleRecord() {
     return;
   }
 
+  if (!topicConfirmed.value) {
+    uni.showToast({ title: "请先点击确定题目", icon: "none" });
+    return;
+  }
+
   stopSourceAudio();
-  audioPath.value = "";
+  clearPreviousRecording();
   seconds.value = 0;
 
   // #ifdef H5
@@ -341,23 +381,65 @@ recorder.onError(() => {
 // #endif
 
 function playRecording() {
-  if (recordingAudio) recordingAudio.destroy();
+  stopRecordingPlayback();
   recordingAudio = uni.createInnerAudioContext();
   recordingAudio.src = audioPath.value;
   recordingAudio.play();
 }
 
+function stopRecordingPlayback() {
+  if (!recordingAudio) return;
+  if (typeof recordingAudio.stop === "function") recordingAudio.stop();
+  recordingAudio.destroy();
+  recordingAudio = null;
+}
+
+function clearPreviousRecording() {
+  stopRecordingPlayback();
+
+  // #ifdef H5
+  if (audioPath.value && audioPath.value.startsWith("blob:")) {
+    URL.revokeObjectURL(audioPath.value);
+  }
+  // #endif
+
+  audioPath.value = "";
+}
+
+function rerecord() {
+  if (recording.value || submitting.value) return;
+  clearPreviousRecording();
+  seconds.value = 0;
+}
+
 async function submit() {
+  if (!topicConfirmed.value) {
+    uni.showToast({ title: "请先点击确定题目", icon: "none" });
+    return;
+  }
+  if (seconds.value < 2) {
+    uni.showToast({
+      title: "录音少于2秒，判定为无效，请重新录音",
+      icon: "none",
+    });
+    return;
+  }
+
   submitting.value = true;
   try {
-    const uploaded = await uploadAudio(audioPath.value);
+    const uploaded = await uploadAudio(audioPath.value, {
+      questionId: questionId.value,
+      language: topicLanguage.value === "zh" ? "en" : "zh",
+    });
     const result = await request("/api/evaluate", {
       method: "POST",
+      timeout: 120000,
       data: {
         audioId: uploaded.audioId,
         questionId: questionId.value,
         type: typeCode.value,
         sourceText: topic.value,
+        transcription: uploaded.transcription?.text || "",
       },
     });
     uni.setStorageSync("latestEvaluation", {
@@ -365,6 +447,7 @@ async function submit() {
       type: typeName.value,
       sourceText: topic.value,
       audioPath: audioPath.value,
+      transcription: uploaded.transcription?.text || "",
     });
     uni.redirectTo({ url: "/pages/result/result" });
   } catch (error) {
@@ -377,7 +460,7 @@ async function submit() {
 onUnmounted(() => {
   clearInterval(timer);
   stopSourceAudio();
-  if (recordingAudio) recordingAudio.destroy();
+  stopRecordingPlayback();
 
   // #ifdef H5
   if (mediaRecorder && mediaRecorder.state === "recording") {
@@ -386,9 +469,7 @@ onUnmounted(() => {
   if (mediaStream) {
     mediaStream.getTracks().forEach((track) => track.stop());
   }
-  if (audioPath.value && audioPath.value.startsWith("blob:")) {
-    URL.revokeObjectURL(audioPath.value);
-  }
+  if (audioPath.value && audioPath.value.startsWith("blob:")) URL.revokeObjectURL(audioPath.value);
   // #endif
 });
 </script>
@@ -410,6 +491,22 @@ onUnmounted(() => {
 }
 .prompt { padding: 36rpx; }
 .link { color: #176b52; }
+.topic-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+.topic-action {
+  min-width: 130rpx;
+  margin: 0;
+  padding: 0 22rpx;
+  border-radius: 28rpx;
+  font-size: 24rpx;
+  line-height: 54rpx;
+}
+.topic-action::after { border: 0; }
+.change { background: #eef6f3; color: #176b52; }
+.confirm { background: #176b52; color: #fff; }
 .source {
   display: block;
   margin: 30rpx 0;
@@ -442,6 +539,7 @@ onUnmounted(() => {
   border-radius: 50%;
   background: #d8eee7;
 }
+.ring.locked { opacity: 0.45; }
 .mic {
   display: flex;
   align-items: center;
@@ -462,5 +560,27 @@ onUnmounted(() => {
   margin-bottom: 28rpx;
   padding: 25rpx 30rpx;
   color: #176b52;
+}
+.record-actions {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+.record-action {
+  min-width: 132rpx;
+  margin: 0;
+  padding: 0 22rpx;
+  border-radius: 30rpx;
+  font-size: 24rpx;
+  line-height: 58rpx;
+}
+.record-action::after { border: 0; }
+.preview {
+  background: #eef6f3;
+  color: #176b52;
+}
+.rerecord {
+  background: #176b52;
+  color: #fff;
 }
 </style>

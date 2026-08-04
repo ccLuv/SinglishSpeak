@@ -7,6 +7,7 @@ const path = require('path');
 const http = require('http');
 const { execFile } = require('child_process');
 const { promisify } = require('util');
+const { evaluateWithDeepSeek } = require('./services/deepseekEvaluator');
 require('dotenv').config();
 
 const app = express();
@@ -69,6 +70,10 @@ function getQuestionById(questionId) {
     return null;
 }
 
+function countEffectiveCharacters(text) {
+    return (String(text || '').match(/[\p{L}\p{N}]/gu) || []).length;
+}
+
 function escapeSsml(text) {
     return String(text)
         .replaceAll('&', '&amp;')
@@ -127,7 +132,7 @@ function saveHistoryItem(item) {
 // 上传配置
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        const dir = './uploads/audio';
+        const dir = path.join(__dirname, 'uploads', 'audio');
         if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
         cb(null, dir);
     },
@@ -332,23 +337,90 @@ app.post('/api/edge-tts', async (req, res) => {
     }
 });
 
-app.post('/api/uploadAudio', upload.single('audio'), (req, res) => {
-    if (!req.file) return res.json({ code: 400, msg: "No file" });
-    res.json({ code: 200, data: { audioId: Date.now() } });
+app.post('/api/uploadAudio', upload.single('audio'), async (req, res) => {
+    if (!req.file) {
+        return res.status(400).json({ code: 400, msg: 'No audio file received' });
+    }
+    try {
+        const question = getQuestionById(req.body.questionId);
+        const asrServiceUrl = process.env.ASR_SERVICE_URL || 'http://127.0.0.1:8000';
+        const prompt = question
+            ? `Singapore interpreting exercise. The recording may contain English and Mandarin. Source topic: ${question.text}`
+            : 'Singapore interpreting exercise. The recording may contain English and Mandarin.';
+        const response = await axios.post(`${asrServiceUrl}/transcribe`, {
+            audioPath: path.resolve(req.file.path),
+            language: req.body.language || undefined,
+            prompt
+        }, {
+            timeout: Number(process.env.ASR_TIMEOUT_MS || 300000)
+        });
+
+        const transcription = response.data || {};
+        const duration = Number(transcription.duration || 0);
+        const effectiveCharacters = countEffectiveCharacters(transcription.text);
+
+        if (duration < 2) {
+            return res.status(422).json({
+                code: 422,
+                msg: '录音少于2秒，判定为无效，请重新录音'
+            });
+        }
+        if (effectiveCharacters < 5) {
+            return res.status(422).json({
+                code: 422,
+                msg: '有效转写少于5个字符，判定为无效，请重新录音并清晰作答'
+            });
+        }
+
+        res.json({
+            code: 200,
+            data: {
+                audioId: path.parse(req.file.filename).name,
+                transcription
+            }
+        });
+    } catch (error) {
+        const details = error.response?.data?.detail || error.message;
+        console.error('ASR transcription error:', details);
+        res.status(502).json({
+            code: 502,
+            msg: `语音转写失败：${details}。请确认 asr-service/start.bat 正在运行`
+        });
+    }
 });
 
-// AI评估
-app.post('/api/evaluate', (req, res) => {
-    res.json({
-        code: 200,
-        data: {
-            evaluation: {
-                score: 88,
-                feedback: "Pronunciation is clear and fluent.",
-                suggestions: ["Speed is appropriate", "Professional terms accurate"]
-            }
-        }
-    });
+// DeepSeek口译内容评估
+app.post('/api/evaluate', async (req, res) => {
+    const { questionId, transcription } = req.body;
+    const question = getQuestionById(questionId);
+
+    if (!question) {
+        return res.status(404).json({ code: 404, msg: '未找到对应题目' });
+    }
+    if (countEffectiveCharacters(transcription) < 5) {
+        return res.status(400).json({
+            code: 400,
+            msg: '有效转写少于5个字符，判定为无效，请重新录音并清晰作答'
+        });
+    }
+
+    try {
+        const evaluation = await evaluateWithDeepSeek({
+            question,
+            transcription: String(transcription).trim()
+        });
+        res.json({ code: 200, data: { evaluation } });
+    } catch (error) {
+        const apiMessage = error.response?.data?.error?.message;
+        const status = error.code === 'MISSING_API_KEY' ? 503 : 502;
+        console.error('DeepSeek evaluation error:', apiMessage || error.message);
+        res.status(status).json({
+            code: status,
+            msg: error.code === 'MISSING_API_KEY'
+                ? 'DeepSeek 尚未配置：请在 backend/.env 中填写 DEEPSEEK_API_KEY'
+                : `DeepSeek 评分失败：${apiMessage || error.message}`
+        });
+    }
 });
 
 // ========================== 百度语音接口 ==========================

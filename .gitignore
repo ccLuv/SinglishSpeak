@@ -2,6 +2,8 @@
 **/node_modules/
 **/.npm-cache/
 **/.venv/
+**/__pycache__/
+asr-service/models/
 
 # Secrets and local environment
 **/.env

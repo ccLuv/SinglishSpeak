@@ -9,14 +9,17 @@
 - 新加坡英语和普通话在线语音朗读
 - 浏览器与 App 录音
 - 训练记录、账户名称与密码管理
-- AI 测评接口预留（当前为原型评分，尚未接入正式 ASR 与 DeepSeek 测评链路）
+- faster-whisper 本地语音转写
+- DeepSeek 口译内容评分与分项反馈
+- 无效录音拦截：录音至少 2 秒、有效转写至少 5 个字符，并检测内容相关性
 
 ## 项目结构
 
 ```text
 .
 ├─ SinglishSpeak/       Vue 3 + uni-app 前端
-└─ backend/             Express 后端、题库和 edge-tts 生成器
+├─ backend/             Express 后端、题库和 edge-tts 生成器
+└─ asr-service/         faster-whisper 本地转写服务
 ```
 
 ## 环境要求
@@ -25,6 +28,18 @@
 - Node.js 20 或更高版本
 - Python 3.10 或更高版本
 - 可访问 Microsoft Edge 在线语音服务的网络
+
+## 启动语音转写
+
+首次使用先双击 `asr-service/setup.bat` 安装依赖，然后双击
+`asr-service/start.bat`。保持该窗口运行，再启动后端。首次提交录音时会自动下载
+`small` 模型，详细配置见 `asr-service/README.md`。
+
+## 配置 DeepSeek 评分
+
+复制 `backend/.env.example` 为 `backend/.env`，将
+`DEEPSEEK_API_KEY=replace_with_your_key` 替换为自己的 API Key。Key 只保存在后端，
+`.env` 已被 Git 忽略。默认使用 `deepseek-v4-flash`。
 
 ## 启动后端
 
